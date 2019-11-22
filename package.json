@@ -4,12 +4,13 @@
   "description": "Vous retrouverez ici mes supports de cours. Ils sont mis à disposition sous licence creative common, voir le fichier [LICENSE.md](LICENSE.md).",
   "main": "index.js",
   "scripts": {
-    "install": "npm run build-javascript && npm run build-back-end && npm run build-jeu-video && npm run build-html",
-    "build-javascript": "cd javascript && npm i && npm run build",
-    "build-back-end": "cd back-end && npm i && npm run build",
-    "build-jeu-video": "cd jeu-video && npm i && npm run build",
-    "build-html": "cd nouveautes-html5-css3 && npm i && npm run build"
+    "build:all": "npm run build:javascript && npm run build:back-end && npm run build:jeu-video && npm run build:html",
+    "build:javascript": "cd javascript && npm i && npm run build",
+    "build:back-end": "cd back-end && npm i && npm run build",
+    "build:jeu-video": "cd jeu-video && npm i && npm run build",
+    "build:html": "cd nouveautes-html5-css3 && npm i && npm run build"
   },
+  "pre-commit": [ "build:all" ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lythom/teachings.git"
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Lythom/teachings/issues"
   },
-  "homepage": "https://github.com/Lythom/teachings#readme"
+  "homepage": "https://github.com/Lythom/teachings#readme",
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  }
 }
