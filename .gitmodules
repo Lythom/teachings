@@ -1,0 +1,9 @@
+[submodule "javascript"]
+	path = javascript
+	url = git@bitbucket.org:Lythom/cours-javascript.git
+[submodule "nouveautes-html5-css3"]
+	path = nouveautes-html5-css3
+	url = https://github.com/Lythom/formation-api-html5-css3.git
+[submodule "jeu-video"]
+	path = jeu-video
+	url = git@bitbucket.org:Lythom/cours-jv.git

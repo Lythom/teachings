@@ -1,0 +1,100 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 36px;
+$mainFont: 'Lato', Helvetica, sans-serif;
+$headingFont: 'Lato', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.0em;
+$heading2Size: 1.3em;
+$heading3Size: 1.0em;
+$heading4Size: 0.8em;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+@import url(../../../lib/font/league-gothic/league-gothic.css);
+
+.reveal {
+	section > section.past:first-child:not(.hideIfNotFirst) {
+		display: block !important;
+		opacity: 1 !important;
+		transform: translate(0, 0) !important;
+		top: 0px !important;
+		transition: transform 200ms ease, top 200ms ease !important;
+	}
+	section img {
+		border: none;
+		outline: 4px solid black;
+	}
+	pre code {
+		max-height: 460px;
+	}
+	pre {
+		width: 100%;
+	}
+
+	.inline {
+		display: inline !important;
+	}
+
+	small, .small {
+		font-size: 28px !important;
+	}
+	.smaller {
+		font-size: 22px !important;
+	}
+
+	.m0p0 {
+		margin: 0;
+		padding: 0;
+	}
+
+	.va-top {
+		vertical-align: top;
+	}
+	.va-middle {
+		vertical-align: middle;
+	}
+
+	.ta-left {
+		text-align: left;
+	}
+}
