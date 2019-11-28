@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Dev back-end</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Dev back-end</h1>
+            <h1 class="small">Authentification et Authorisations</h1>
+        </section>
+        <section>
+            <h2>Objectifs</h2>
+            <ul>
+                <li>Limiter des services aux utilisateurs autorisés</li>
+                <li>Authentifier une personne</li>
+                <li>Maintenir et sécuriser une session</li>
+                <li>Gérer les autorisations</li>
+            </ul>
+        </section>
+        <section>
+            <section><h2>Introduction</h2></section>
+            <section>
+                <h2>Samuel BOUCHET</h2>
+
+                <div>Développeur indépendant - Web et Jeu vidéo</div>
+
+                <img src="photo.png" style="width: 200px;height: auto;"/>
+
+                <div><a href="https://twitter.com/Lythom">@Lythom</a></div>
+
+                <aside class="notes">
+                    <li>formation Ingénieur logiciel</li>
+                    <li>Société de service / édition logicielle / Web / JavaScript</li>
+                    <li>Développeur de JS</li>
+                </aside>
+            </section>
+            <section style="background: black;color: white;">
+                <a style="color: white;"><a href="https://a-time-paradox.com/"><img src="images/lythom_atimeparado.jpg" alt="A Time Paradox" height="600"/></a></h2>
+                    <aside class="notes">
+                        <li>A Time Paradox</li>
+                    </aside>
+            </section>
+        </section>
+        <section>
+            <h2>Une collaboration<br/>professionnelle</h2>
+            <aside class="notes">
+                <li>Enseignant / étudiant</li>
+                <li>Professionnelle (collègue)</li>
+                <li>Vouvoiement</li>
+            </aside>
+        </section>
+        <section>
+            <h2>Évaluations</h2>
+            <div>
+                Chaque début de cours
+            </div>
+            <div>
+                <a href="..">←</a>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script src="plugin/markdown/marked.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+
+    Reveal.initialize({
+        history      : true,
+        dependencies : [
+            { src : 'plugin/notes/notes.js', async : true },
+            { src : 'plugin/highlight/highlight.js', async : true, callback : function() { hljs.initHighlightingOnLoad(); } }
+        ],
+        markdown     : {
+            sanitize    : false,
+            smartypants : false,
+        }
+    });
+
+
+</script>
+</body>
+</html>
