@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build:all": "npm run build:javascript && npm run build:back-end && npm run build:jeu-video && npm run build:html",
-    "build:javascript": "cd javascript && npm i && npm run build",
-    "build:back-end": "cd back-end && npm i && npm run build",
-    "build:jeu-video": "cd jeu-video && npm i && npm run build",
-    "build:html": "cd nouveautes-html5-css3 && npm i && npm run build"
+    "build:javascript": "cd javascript && npm ci && npm run build",
+    "build:back-end": "cd back-end && npm ci && npm run build",
+    "build:jeu-video": "cd jeu-video && npm ci && npm run build",
+    "build:html": "cd nouveautes-html5-css3 && npm ci && npm run build"
   },
   "pre-commit": [ "build:back-end" ],
   "repository": {
