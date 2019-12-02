@@ -23,6 +23,7 @@
 </head>
 <body>
 <div class="reveal">
+    <div style="position: absolute;z-index:999;padding:0.5rem;"><a href=".."><strong>&nbsp;←</strong></a></div>
     <div class="slides">
         <section>
             <h1>Dev back-end</h1>
@@ -196,9 +197,19 @@ c->s: "requête http + cookie attaché automatiquement"
         <section>
             <h3>Sessions > entrepôt de données de session (session store)</h3>
             <ul class="small">
-                <li>Il est possible de stocker une session sur le système de fichier du serveur.</li>
-                <li>Ce format est déprécié car il n'est pas garantit qu'un même utilisateur joigne la même machine à
-                    chaque requête (situation de load balancing)
+                <li>Le session store répond à une problématique de performance.
+                    <ul class="smaller">
+                        <li>A mettre en place dès qu'une problème de performance est mesurable, pas avant.</li>
+                    </ul>
+                </li>
+                <li>
+                    Les outils utilisés seront les même que pour du cache applicatif, mais l'architecture sera
+                    légèrement différente.
+                    <ul class="smaller">
+                        <li>
+                            Cf. <a href="https://redislabs.com/blog/cache-vs-session-store/">Cache vs. Session Store</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </section>
@@ -206,7 +217,7 @@ c->s: "requête http + cookie attaché automatiquement"
     </div>
 </div>
 
-<script src="lib/js/head.min.js"></script>
+
 <script src="js/reveal.js"></script>
 <script src="plugin/markdown/marked.js"></script>
 <script src="plugin/markdown/markdown.js"></script>

@@ -23,6 +23,7 @@
 </head>
 <body>
 <div class="reveal">
+    <div style="position: absolute;z-index:999;padding:0.5rem;"><a href=".."><strong>&nbsp;←</strong></a></div>
     <div class="slides">
         <section>
             <h1>Dev back-end</h1>
@@ -32,25 +33,42 @@
             <h2>Le serveur</h2>
             <ul>
                 <li><strong>Technologie</strong>: libre</li>
-                <li><strong>Port</strong>: 8081</li>
+                <li><strong>Port</strong>: 1337</li>
                 <li><strong>Protocol</strong>: HTTP</li>
                 <li><strong>Type d'API</strong>: REST</li>
             </ul>
         </section>
         <section>
-            <h2>Service /random</h2>
-            <ul>
-                <li><strong>Chemin</strong>: /random</li>
-                <li><strong>Méthode</strong>: GET</li>
-                <li><strong>Paramètres d'URL</strong>: aucun</li>
-                <li><strong>Body</strong>: aucun</li>
-                <li><strong>Retour</strong>: texte, nombre entre 0 et 1, séparateur décimal: point <pre><code>.</code></pre></li>
-            </ul>
+            <h2>Service</h2>
+            <div>Description du service via Postman :</div>
+            <div><a href="fichiers/server.postman_collection.json">Collection Postman à importer</a></div>
+            <div><a href="fichiers/Local.postman_environment.json">Environnement Postman à importer</a></div>
+            <img src="images/import_postman.png" />
         </section>
+        <section>
+            <h2>Examples</h2>
+            <div><a href="https://github.com/Lythom/go-webserver">Serveur web en Go</a></div>
+            <div><a href="https://github.com/Lythom/haxe-nodejs-webserver">Serveur web en Haxe</a></div>
+        </section>
+        <section>
+            <h2>Débogage</h2>
+            <div>Un environnement de développement DOIT comprendre la possibilité d'utiliser un débogueur.</div>
+            <div>Voir les fichiers README.md des projets précédents pour configurer le celui de VSCode</div>
+        </section>
+        <section>
+            <h2>Evaluation</h2>
+            <ol class="small">
+                <li>Importer la <a href="fichiers/server.postman_collection.json">Collection Postman</a></li>
+                <li>Importer l'<a href="fichiers/Local.postman_environment.json">Environnement Postman</a></li>
+                <li>Lancer le serveur d'API Haxe ou Go</li>
+                <li>Jouer la collection</li>
+                <li>Faites évoluer le serveur jusqu'à ce que tous les tests passent</li>
+            </ol>
+            <img src="images/test_postman_collection.png" height="412" width="584"/></section>
     </div>
 </div>
 
-<script src="lib/js/head.min.js"></script>
+
 <script src="js/reveal.js"></script>
 <script src="plugin/markdown/marked.js"></script>
 <script src="plugin/markdown/markdown.js"></script>
@@ -61,14 +79,18 @@
     // - https://github.com/hakimel/reveal.js#dependencies
 
     Reveal.initialize({
-        history      : true,
-        dependencies : [
-            { src : 'plugin/notes/notes.js', async : true },
-            { src : 'plugin/highlight/highlight.js', async : true, callback : function() { hljs.initHighlightingOnLoad(); } }
+        history: true,
+        dependencies: [
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
         ],
-        markdown     : {
-            sanitize    : false,
-            smartypants : false,
+        markdown: {
+            sanitize: false,
+            smartypants: false,
         }
     });
 
