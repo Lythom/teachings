@@ -10,7 +10,6 @@
     "build:jeu-video": "cd jeu-video && npm ci && npm run build",
     "build:html": "cd nouveautes-html5-css3 && npm ci && npm run build"
   },
-  "pre-commit": [ "build:back-end" ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lythom/teachings.git"
