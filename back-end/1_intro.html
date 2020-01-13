@@ -56,7 +56,7 @@
                 </aside>
             </section>
             <section style="background: black;color: white;">
-                <a style="color: white;"><a href="https://a-time-paradox.com/"><img src="images/lythom_atimeparado.jpg" alt="A Time Paradox" height="600"/></a></h2>
+                <h2 style="color: white;"><a href="https://a-time-paradox.com/"><img src="images/lythom_atimeparado.jpg" alt="A Time Paradox" height="600"/></a></h2>
                 <aside class="notes">
                     <li>A Time Paradox</li>
                 </aside>
@@ -76,7 +76,39 @@
                 Chaque début de cours
             </div>
             <div>
-                <a href="..">←</a>
+                <a href=".">←</a>
+            </div>
+        </section>
+        <section>
+            <h2>Evaluation du 3 décembre 2019</h2>
+            <ol class="small">
+                <li>Importer la <a href="fichiers/server.postman_collection.json">Collection Postman</a></li>
+                <li>Importer l'<a href="fichiers/Local.postman_environment.json">Environnement Postman</a></li>
+                <li>Lancer le serveur d'API Haxe ou Go</li>
+                <li>Jouer la collection</li>
+                <li>Faites évoluer le serveur jusqu'à ce que tous les tests passent</li>
+            </ol>
+            <img src="images/test_postman_collection.png" height="412" width="584"/>
+        </section>
+        <section>
+            <h2>Évaluation du 14/01/2020</h2>
+            <div class="small">
+                <ol>
+                    <li>Expliquer la différence entre une autorisation et une authentification</li>
+                    <li>Lister les différentes étapes d'une authentification utilisant la mécanique des cookies</li>
+                    <li>Dans la collection Postman importée précédement<ol>
+                        <li>Créer un nouveau dossier "Save"</li>
+                        <li>Y ajouter une requête nommée "/save" de type "POST", envoyant un body avec 2 paramètres "username" et "data".
+                            <br>username sera un des utilisateurs connus de votre serveur web
+                            <br>data aura la valeur <code>{score: 13}</code></li>
+                        <li>Créer un test pour valider le retour 200 de l'API</li>
+                        <li>Créer un test pour valider que la requête retourne un body en JSON qui contient une clé "score" ayant pour valeur 13</li>
+                    </ol></li>
+                    <li>Implémenter le service "/save" dans votre serveur web de sorte que les tests passent.</li>
+                </ol>
+            </div>
+            <div>
+                <a href=".">←</a>
             </div>
         </section>
     </div>

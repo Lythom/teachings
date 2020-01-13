@@ -43,7 +43,7 @@
             <div>Description du service via Postman :</div>
             <div><a href="fichiers/server.postman_collection.json">Collection Postman à importer</a></div>
             <div><a href="fichiers/Local.postman_environment.json">Environnement Postman à importer</a></div>
-            <img src="images/import_postman.png" />
+            <img src="images/import_postman.png"/>
         </section>
         <section>
             <h2>Examples</h2>
@@ -51,27 +51,113 @@
             <div><a href="https://github.com/Lythom/haxe-nodejs-webserver">Serveur web en Haxe</a></div>
         </section>
         <section>
-            <h2>Débogage</h2>
-            <div>Un environnement de développement DOIT comprendre la possibilité d'utiliser un débogueur.</div>
-            <div>Voir les fichiers README.md des projets précédents pour configurer le celui de VSCode</div>
+            <section>
+                <h2>Débogage</h2>
+            </section>
+            <section>
+                <div>Un environnement de développement DOIT comprendre la possibilité d'utiliser un débogueur.</div>
+                <div>Voir les fichiers README.md des projets précédents pour configurer le celui de VSCode</div>
+            </section>
+            <section class="small">
+                <ul>
+                    <li style="padding-bottom: 2rem">Le débogueur (debugger) est un outil permettant d'interrompre un
+                        programme en cours d'exécution,
+                        et d'inspecter voire de modifier les valeurs.
+                    </li>
+                    <li style="padding-bottom: 2rem">On manipule généralement le débogueur via l'environnement de
+                        développement intégré (EDI), par
+                        ex. VSCode, IntelliJ, Eclipse. Il existe aussi des interfaces en ligne de commande qui peuvent
+                        être utiliser pour l'automatisation ou le développement d'outillage supplémentaire.
+                    </li>
+                    <li style="padding-bottom: 2rem">On place générale un "breakpoint" pour indiquer la ligne où on
+                        souhaite une interruption en
+                        cliquant dans la goutière gauche du code source.
+                    </li>
+                    <li>Il est nécessaire de lancer le programme en mode debug. Cette procédure varie selon les
+                        programmes et les EDI. Chercher dans la documentation du langage et de l'EDI.
+                    </li>
+                </ul>
+            </section>
         </section>
         <section>
-            <h2>Evaluation</h2>
-            <ol class="small">
-                <li>Importer la <a href="fichiers/server.postman_collection.json">Collection Postman</a></li>
-                <li>Importer l'<a href="fichiers/Local.postman_environment.json">Environnement Postman</a></li>
-                <li>Lancer le serveur d'API Haxe ou Go</li>
-                <li>Jouer la collection</li>
-                <li>Faites évoluer le serveur jusqu'à ce que tous les tests passent</li>
-            </ol>
-            <img src="images/test_postman_collection.png" height="412" width="584"/>
+            <section><h2>Persistance des identifiants</h2></section>
+            <section>
+                <a class="small" href="https://questionsecu.fr/hachez-salez-poivrez/">https://questionsecu.fr/hachez-salez-poivrez/</a>
+                <ol>
+                    <li>Hasher (bcrypt)
+                        <ul class="smaller">
+                            <li>pour empêcher le vol de mot de passe clair</li>
+                        </ul>
+                    </li>
+                    <li>Saler individuellement avec une valeur associée à chaque utilisateur
+                        <ul class="smaller">
+                            <li>pour empêcher le
+                                bruteforce précalculé
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Poivrer avec une valeur secrète globale
+                        <ul class="smaller">
+                            <li>pour donner du fil à retordre au pirate</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            <section>
+                <ul>
+                    <li>Exercice: Lier une base de données (MySQL ou PostGre) et créer une table <code>user(id, login,
+                        password)</code></li>
+                    <li>Exercice: Modifier la fonction d'inscription pour inscrire l'utilisateur en base de donnée en
+                        sécurisant son mot de passe
+                    </li>
+                    <li>Exercice: Modifier la fonction de connexion pour vérifier les données depuis la base de
+                        données
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section><h2>Utilisation d'un jeton de session</h2></section>
+            <section>
+                <h3>Mise en place</h3>
+                <ol class="small">
+                    <li>Créer une table <code>token(id, id_user, expiration)</code></li>
+                    <li>Créer une fonction <code>createToken(user:User, durationInMinutes:Float):String</code> qui
+                        enregistre en base un jeton pour l'utilisateur
+                    </li>
+                    <li>Créer une fonction <code>fromToken(token:String):User</code> qui retrouve en base l'utilisateur
+                        associé à un jeton
+                    </li>
+                    <li>Modifier la fonction de connexion pour créer et transmettre un jeton en cookie de session</li>
+                </ol>
+            </section>
+        </section>
+        <section>
+            <section><h2>Persister les données de jeu</h2></section>
+            <section>
+                <ul>
+                    <li>Créer une colonne <code>data</code> dans la table <code>user</code></li>
+                    <li>Créer un service <code>/save</code> qui nécessite le jeton de session en cookie et prends du
+                        JSON en body.
+                    </li>
+                    <li>Créer un service <code>/load</code> qui nécessite le jeton de session en cookie et retourne du
+                        JSON en body.
+                    </li>
+                    <li>Modifier tous vos services pour retourner des codes HTTP adaptés
+                        <ul class="smaller">
+                            <li>200 (ok),</li>
+                            <li>400 (expected values were not provided or wrongly typed),</li>
+                            <li>401 (not authenticated, missing session token, token expired),</li>
+                            <li>403 (authenticated but wrong permission),</li>
+                            <li>500 (unexpected error)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
         </section>
         <section>
             <h2>Suite du projet</h2>
             <ul>
-                <li>Faire persister les identifiants dans une base de données lors de l'inscription</li>
-                <li>Permettre l'enregistrement de données via API /save</li>
-                <li>Permettre la lecture de données via API /load</li>
                 <li>Ouvrir un canal websocket</li>
                 <li>Ecouter les "message"</li>
                 <li>Envoyer une notification lorsque le message ne n'importe quel utilisateur est déclenché</li>

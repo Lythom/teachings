@@ -1,9 +1,4 @@
-- Pas un passionné de back-end
-    => Moins influencé par la mode technologique du mode (hype)
-    => Pas d'isolement dans une technologie particulière
-    => Utilisation pragmatique et efficace des outils
-    => Une vue plus haut niveau (architecture logicielle) que technique
-    
+
 # Resources
 
 Backend lerning
