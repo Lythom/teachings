@@ -214,6 +214,29 @@ c->s: "requête http + cookie attaché automatiquement"
             </ul>
         </section>
         <section>
+            <h2>Sécuriser un mot de passe</h2>
+            <a class="small" href="https://questionsecu.fr/hachez-salez-poivrez/">https://questionsecu.fr/hachez-salez-poivrez/</a>
+            <ol>
+                <li>Hasher (bcrypt)
+                    <ul class="smaller">
+                        <li>pour empêcher le vol de mot de passe clair</li>
+                    </ul>
+                </li>
+                <li>Saler individuellement avec une valeur associée à chaque utilisateur
+                    <ul class="smaller">
+                        <li>pour empêcher le
+                            bruteforce précalculé
+                        </li>
+                    </ul>
+                </li>
+                <li>Poivrer avec une valeur secrète globale
+                    <ul class="smaller">
+                        <li>pour donner du fil à retordre au pirate</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+        <section>
             <h3>Suite</h3>
             <ul>
                 <li>HTTPS / SSL</li>
