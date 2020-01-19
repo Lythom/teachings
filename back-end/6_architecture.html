@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Dev back-end</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div style="position: absolute;z-index:999;padding:0.5rem;"><a href=".."><strong>&nbsp;←</strong></a></div>
+    <div class="slides">
+        <section>
+            <h1>Dev back-end</h1>
+            <h1 class="small">Architecture et standards</h1>
+        </section>
+        <section>
+            <h2>Objectifs</h2>
+            <ul>
+                <li>Structurer une application serveur de façon pertinente</li>
+                <li>Découvrir les pratiques usuelles</li>
+            </ul>
+        </section>
+        <section>
+            <section><h2>Architectures</h2></section>
+            <section><h3>architecture n-tiers</h3>
+                <a class="smaller" href="https://web2.cegepat.qc.ca/~claudeboutet/index.php/2016/04/14/le-pattern-architectural-n-tiers/">https://web2.cegepat.qc.ca/~claudeboutet/index.php/2016/04/14/le-pattern-architectural-n-tiers/</a>
+                <a class="smaller" href="https://www.supinfo.com/articles/single/6437-fonctionnement-une-architecture-trois-tiers">https://www.supinfo.com/articles/single/6437-fonctionnement-une-architecture-trois-tiers</a>
+
+                <ul class="smaller" style="margin-top: 2rem">
+                    <li>+ flexible (on peut remplacer une couche, les interfaces de chaque couche sont exposées)</li>
+                    <li>+ testable (on peut simuler les autres couches pour tester un couche)</li>
+                    <li>+ multi-système (chaque couche est techniquement autonome)</li>
+                    <li>~ performances (une requêtes doit traverser un certain nombre de couches)</li>
+                    <li>- scalabilité (élasticité) (On ne peut pas forcément multiplier facilement une couche)</li>
+                </ul>
+            </section>
+            <section><h3>Microservices</h3>
+                <a href="https://www.supinfo.com/articles/single/5676-qu-est-ce-que-architecture-microservices">https://www.supinfo.com/articles/single/5676-qu-est-ce-que-architecture-microservices</a>
+                <ul class="smaller">
+                    <li>+ flexible (on peut remplacer une application, les interfaces de chaque application sont
+                        exposées)
+                    </li>
+                    <li>+ testable (on peut simuler les autres applications pour tester une application)</li>
+                    <li>+ multi-système (chaque application est techniquement autonome)</li>
+                    <li>+ scalabilité (élasticité) (Les applications sont stateless et peuvent être déployées en plusieurs
+                        instances)
+                    </li>
+                    <li>+ agilité (des cycles de vie indépendants)</li>
+                    <li>~ performances (dépend de la conception)</li>
+                    <li>- stabilité (cycles de vie différents = risque de version incompatibles)</li>
+                </ul>
+            </section>
+            <section><h3>autres sources</h3>
+                <ul class="smaller">
+                    <li>
+                        <a href="https://moodle.insa-lyon.fr/pluginfile.php/97296/mod_resource/content/0/architectures.pdf">https://moodle.insa-lyon.fr/pluginfile.php/97296/mod_resource/content/0/architectures.pdf</a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section><h2>Protocoles Standards</h2></section>
+            <section>
+                <h3>REST</h3>
+                <a href="https://www.croes.org/gerald/blog/qu-est-ce-que-rest/447/">https://www.croes.org/gerald/blog/qu-est-ce-que-rest/447/</a>
+            </section>
+            <section>
+                <h3>GraphQL</h3>
+                <a href="https://blog.octo.com/graphql-et-pourquoi-faire/">https://blog.octo.com/graphql-et-pourquoi-faire/</a>
+                <a href="https://www.apollographql.com/docs/apollo-server/">Apollo server (serveur GraphQL)</a>
+                <a href="https://www.youtube.com/watch?v=gSgmGXDg8gQ">Hasura (serveur graphQL automatique à partir d'une BDD)</a>
+            </section>
+        </section>
+
+    </div>
+</div>
+
+
+<script src="js/reveal.js"></script>
+<script src="plugin/markdown/marked.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ],
+        markdown: {
+            sanitize: false,
+            smartypants: false,
+        }
+    });
+
+
+</script>
+</body>
+</html>

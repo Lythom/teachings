@@ -156,12 +156,40 @@
             </section>
         </section>
         <section>
-            <h2>Suite du projet</h2>
-            <ul>
-                <li>Ouvrir un canal websocket</li>
-                <li>Ecouter les "message"</li>
-                <li>Envoyer une notification lorsque le message ne n'importe quel utilisateur est déclenché</li>
-            </ul>
+            <section><h2>Ouvrir un canal websocket</h2></section>
+            <section>
+                <h3>Faire un chat</h3>
+                <ol>
+                    <li>Ajouter un endpoint /ws qui accepte les connexions websocket.</li>
+                    <li><a href="https://github.com/y-temp4/express-ws-chat-sample/tree/master/public">Créer un client en page web</a>.</li>
+                    <li>Modifier le code serveur pour qu'il renvoie tous les messages à tous les utilisateurs connects.</li>
+                </ol>
+                <ul>
+                    <li>
+                        <a href="https://scotch.io/bar-talk/build-a-realtime-chat-server-with-go-and-websockets">Example
+                            en Go</a></li>
+                    <li><a href="https://github.com/y-temp4/express-ws-chat-sample/blob/master/server.js">Example
+                        en JavaScript</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Sécuriser le chat</h3>
+                <ul class="small">
+                    <li>Ajouter un endpoint authentifié <code>/wsTicket</code> qui créer un ticket, l'enregistre en mémoire et le retourne en réponse.
+                        <ul>
+                            <li>Le ticket est un jeton unique, il est généré aléatoirement, et est associé à un
+                                utilisateur.
+                            </li>
+                            <li>Stocker le ticket en mémoire (pas en BDD).</li>
+                        </ul>
+                    </li>
+                    <li>Modifier le handler du serveur websocket pour fermer la connexion si le premier message n'est pas un ticket valide.</li>
+                    <li>Si le ticket est valide, autoriser les autres messages et détruire le ticket.</li>
+                    <li>Le message du ticket ne devra pas être envoyé aux autres connectés.</li>
+                    <li>Si le premier message n'est pas un ticket valide, renvoyer le message "Ticket erroné, obtenir un autre ticket auprès du serveur"</li>
+                    <li>Obtenir un ticket via Postman et envoyer ce ticket comme premier message pour se connecter.</li>
+                </ul>
+            </section>
         </section>
     </div>
 </div>

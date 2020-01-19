@@ -278,6 +278,133 @@ console.log(evens);</code></pre>
                 <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Closures">https://developer.mozilla.org/fr/docs/Web/JavaScript/Closures</a>
             </section>
         </section>
+        <section>
+            <section>
+                <h2>Cache et invalidation de cache</h2>
+            </section>
+            <section>
+                <blockquote>There are only two hard things in Computer Science: cache invalidation and naming things.
+                    <footer>—Phil Karlton</footer>
+                </blockquote>
+                <div>Il n'y a que 2 choses difficiles en informatique, l'invalidation de cache et nommer les choses.
+                </div>
+            </section>
+            <section>
+                <h3>Mettre en cache</h3>
+                <div>Mettre en cache consiste à stocker une données calculée en mémoire pour pouvoir la relire sans la
+                    recalculer dans le but d'améliorer les performances de l'application.
+                </div>
+            </section>
+            <section>
+                <h3>Le danger</h3>
+                <div>Le danger du cache: Lorsqu'une des données utilisée pour le calcul change, alors le cache devient
+                    obsolète et il doit être recalculé.
+                </div>
+            </section>
+            <section>
+                <h3>Invalidation</h3>
+                <div class="small"><p>L'idée générale consiste à mettre en place une mécanique d'invalidation du cache
+                    lorsqu'on détecte son obsolescence.</p>
+                    <div class="ta-left">Le cache invalidé pourra être recalculé :<br/>
+                        <ul>
+                            <li>à sa prochaine tentative de lecture
+                                <ul class="smaller">
+                                    <li>intéressant si la donnée a peu de
+                                        chance d'être relue, si l'invalidation est provoquée par une action humaine,
+                                        ou s'il y a
+                                        beaucoup de caches à recalculer (ce qui peut être très long à faire en une seule
+                                        fois et peut bloquer des
+                                        ressources matérielles).
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>dès l'invalidation
+                                <ul class="smaller">
+                                    <li>permet d'accélérer l'accès des prochains utilisateurs.
+                                        C'est utile lorsque l'invalidation est provoquée de manière automatique par un
+                                        robot (et non
+                                        par un utilisateur humain), de sorte que l'expérience utilisateur soit la
+                                        meilleure possible.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="smaller ta-left" style="padding-top: 1rem">Parfois le cache doit être invalidé et réutilisé
+                    immédiatement, Il n'y a alors aucune
+                    différence entre les 2 approches.
+                </div>
+            </section>
+            <section>
+                <h3>Stratégies d'invalidation</h3>
+                <ul>
+                    <li>Automatiser le recalcul du cache lors d'une mise à jour d'une donnée source, il s'agit de <a
+                            href="https://fr.wikipedia.org/wiki/Programmation_r%C3%A9active">Programmation réactive</a>.
+                        <ul>
+                            <li class="small">Ex: <a
+                                    href="https://medium.com/machine-words/introduction-to-reactive-programming-using-mobx-2c032cac818e">MobX</a>,
+                                <a href="https://putaindecode.io/articles/la-programmation-reactive-avec-rxjs/">ReactiveX</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Invalider après une date d'expiration.
+                        <ul>
+                            <li class="small">
+                                Ex: Une donnée pour laquelle une mise à jour légèrement différée n'est pas génantes.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Invalider manuellement.
+                        <ul>
+                            <li class="small">
+                                Lorsque le développeur maitrise le moment où l'obsolescence est créée.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Emplacement du cache</h3>
+                <div class="small">
+                    On surveillera : <br/>
+                    <ul>
+                        <li>Les variables persistantes dans la durée (static, singletons, variables de classe)</li>
+                        <li>Les fichiers temporaires ou fichiers de cache (ex: rendus html exportés en fichier)</li>
+                        <li>Toutes les données calculées à partir d'une autre source</li>
+                    </ul>
+                </div>
+                <p class="small">Pour toute donnée calculée il est important de connaître exhaustivement ses sources.
+                    Sinon l'invalidation n'est plus possible et on peut se retrouver avec des bugs de données
+                    incohérentes.</p>
+
+            </section>
+        </section>
+        <section>
+            <section><h2>Nommer les choses</h2></section>
+            <section>
+                <blockquote>There are only two hard things in Computer Science: cache invalidation and naming things.
+                    <footer>—Phil Karlton</footer>
+                </blockquote>
+                <div>Il n'y a que 2 choses difficiles en informatique, l'invalidation de cache et nommer les choses.
+                </div>
+            </section>
+            <section>
+                <ul class="small">
+                    <li>Utiliser un nommage ennuyeux, simple. Le stagiaire doit comprendre.</li>
+                    <li>Doit exprimer le but, l'objectif et comment il est utilisée.</li>
+                    <li>Être aussi précis et lisible que possible.</li>
+                    <li>Être cohérent, discuter des règles en équipe.</li>
+                    <li>Classe: Décrire sa responsabilité (découper la classe si plusieurs responsabilités).</li>
+                    <li>Fonction: Utiliser un verbe d'action (découper si plusieurs fontions).</li>
+                    <li>Ne pas répéter l'arborescence (ex: <code>form/Login</code>, <s><code>form/LoginForm</code></s>.</li>
+                    <li>Eviter les accronymes et les contractions</li>
+                    <li>Eviter le type (ex: <s><code>birthdayDate</code></s>, <s><code>birthdayStr</code></s> => <code>birthday</code>)</li>
+                    <li>Utiliser l'<a href="https://www.wordreference.com/fren/">anglais</a>. </li>
+                </ul>
+            </section>
+        </section>
     </div>
 </div>
 

@@ -237,16 +237,125 @@ c->s: "requête http + cookie attaché automatiquement"
             </ol>
         </section>
         <section>
-            <h3>Suite</h3>
-            <ul>
-                <li>HTTPS / SSL</li>
-                <li>JWT</li>
-                <li>Architectures</li>
-                <li>Standards REST et GraphQL</li>
-                <li>Server Web</li>
-            </ul>
+            <section><h2>SSL / HTTPS</h2></section>
+            <section><h3>Le concept</h3>
+                <a href="https://sebsauvage.net/comprendre/ssl/">http://sebsauvage.net/comprendre/ssl/</a>
+            </section>
+            <section>
+                <h3>Obtenir un certificat</h3>
+                <a href="https://letsencrypt.org/fr/">https://letsencrypt.org/fr/</a>
+            </section>
         </section>
+        <section>
+            <section><h2>JWT et Jetons</h2></section>
+            <section>
+                <h3>Principe du jeton aléatoire</h3>
+                <ul class="smaller">
+                    <li>Lors d'une authentification, émettre un jeton (chaine de caractère aléatoire, au moins 16
+                        caractères): l'enregistrer en base de données et le mettre en cookie
+                        (httpOnly=true,secure=true).
+                        <ul>
+                            <li>En base de donnée, associer le jeton à l'utilisateur et éventuellement à des permissions
+                                spécifiques et à une date d'expiration.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Lors d'une requête comportant le jeton (lu dans le cookies), vérifier en base sa validité et
+                        récupérer les informations associées.
+                    </li>
+                    <li>Vous avez accès à l'identité du demandeur et à ses permissions.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>JWT</h3>
+                <a href="https://blog.ippon.fr/2017/10/12/preuve-dauthentification-avec-jwt/">https://blog.ippon.fr/2017/10/12/preuve-dauthentification-avec-jwt/</a>
+            </section>
+            <section>
+                <h3>Compromis par rapport au jeton (token) aléatoire</h3>
+                <table class="smaller">
+                    <tr>
+                        <th></th>
+                        <th>JWT</th>
+                        <th>Token aléatoire</th>
+                    </tr>
+                    <tr>
+                        <th>Complexité</th>
+                        <td>Plus complèxe</td>
+                        <td>Plus simple</td>
+                    </tr>
+                    <tr>
+                        <th>Base de données (BDD)</th>
+                        <td>Diminue le nombre d'accès en BDD</td>
+                        <td>Accès BDD pour chaque requète authentifiée</td>
+                    </tr>
+                    <tr>
+                        <th>Niveau de sécurité</th>
+                        <td>
+                            <a href="https://paragonie.com/blog/2017/03/jwt-json-web-tokens-is-bad-standard-that-everyone-should-avoid">des
+                                failles de sécurités connues</a></td>
+                        <td>fort</td>
+                    </tr>
+                    <tr>
+                        <th>Invalidation du token</th>
+                        <td>date d'expiration, nécessite une mécanique supplémentaire pour invalider manuellement</td>
+                        <td>configuration en BDD</td>
+                    </tr>
+                    <tr>
+                        <th>taille</th>
+                        <td>variable, assez longue</td>
+                        <td>A la discretion de développeur</td>
+                    </tr>
+                    <tr>
+                        <th>Données de sessions</th>
+                        <td>Pas adapté au stockage de données de sessions</td>
+                        <td>Récupération de la session côté serveur</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <div class="smaller"><a
+                        href="https://paragonie.com/blog/2017/03/jwt-json-web-tokens-is-bad-standard-that-everyone-should-avoid">https://paragonie.com/blog/2017/03/jwt-json-web-tokens-is-bad-standard-that-everyone-should-avoid</a>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section><h2>Architectures</h2></section>
+            <section><h3>architecture n-tiers</h3>
+                <a class="smaller" href="https://web2.cegepat.qc.ca/~claudeboutet/index.php/2016/04/14/le-pattern-architectural-n-tiers/">https://web2.cegepat.qc.ca/~claudeboutet/index.php/2016/04/14/le-pattern-architectural-n-tiers/</a>
+                <a class="smaller" href="https://www.supinfo.com/articles/single/6437-fonctionnement-une-architecture-trois-tiers">https://www.supinfo.com/articles/single/6437-fonctionnement-une-architecture-trois-tiers</a>
 
+                <ul class="smaller" style="margin-top: 2rem">
+                    <li>+ flexible (on peut remplacer une couche, les interfaces de chaque couche sont exposées)</li>
+                    <li>+ testable (on peut simuler les autres couches pour tester un couche)</li>
+                    <li>+ multi-système (chaque couche est techniquement autonome)</li>
+                    <li>~ performances (une requêtes doit traverser un certain nombre de couches)</li>
+                    <li>- scalabilité (élasticité) (On ne peut pas forcément multiplier facilement une couche)</li>
+                </ul>
+            </section>
+            <section><h3>Microservices</h3>
+                <a href="https://www.supinfo.com/articles/single/5676-qu-est-ce-que-architecture-microservices">https://www.supinfo.com/articles/single/5676-qu-est-ce-que-architecture-microservices</a>
+                <ul class="smaller">
+                    <li>+ flexible (on peut remplacer une application, les interfaces de chaque application sont
+                        exposées)
+                    </li>
+                    <li>+ testable (on peut simuler les autres applications pour tester une application)</li>
+                    <li>+ multi-système (chaque application est techniquement autonome)</li>
+                    <li>+ scalabilité (élasticité) (Les applications sont stateless et peuvent être déployées en plusieurs
+                        instances)
+                    </li>
+                    <li>+ agilité (des cycles de vie indépendants)</li>
+                    <li>~ performances (dépend de la conception)</li>
+                    <li>- stabilité (cycles de vie différents = risque de version incompatibles)</li>
+                </ul>
+            </section>
+            <section><h3>autres sources</h3>
+                <ul class="smaller">
+                    <li>
+                        <a href="https://moodle.insa-lyon.fr/pluginfile.php/97296/mod_resource/content/0/architectures.pdf">https://moodle.insa-lyon.fr/pluginfile.php/97296/mod_resource/content/0/architectures.pdf</a>
+                    </li>
+                </ul>
+            </section>
+        </section>
     </div>
 </div>
 
