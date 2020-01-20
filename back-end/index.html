@@ -14,11 +14,11 @@
 
     <!-- Printing and PDF exports -->
     <script>
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-      document.getElementsByTagName('head')[0].appendChild(link);
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
     </script>
     <style>
         @import url(lib/font/league-gothic/league-gothic.css);
@@ -136,28 +136,35 @@
         </section>
         <section>
             <h2>Évaluation du 19/01/2020</h2>
-            <div class="small">
+            <div class="smaller">
                 <ol>
                     <li>Expliquer les étapes nécessaires pour :
                         <ol>
                             <li>stocker un mot de passe de façon sécurisée,</li>
                             <li>comparer le mot de passe d'un utilisateur au mot de passe précédemment enregistré.</li>
                         </ol>
-                        La méthode proposée devra protéger le mot de passe d'un vol de donnée et d'une extraction bruteforce au dictionnaire.
+                        La méthode proposée devra protéger le mot de passe d'un vol de donnée et d'une extraction
+                        bruteforce au dictionnaire.
                     </li>
-                    <li></li>
+                    <li>
+                        Sur projet :
+                        <ul>
+                            <li>Les codes http utilisés sont corrects (200, 401, 403, 500).</li>
+                            <li>L'api d'inscription et authentification est fonctionnelle et sécurisée.</li>
+                            <li>Les inscriptions sont persistantes en base de données.</li>
+                            <li>L'application comporte une couche d'accès aux données. (les requêtes SQL sont séparées
+                                du reste)
+                                <ul>
+                                    <li>OU si autre découpage, le choix d'architecture est argumenté de façon détaillé
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Le serveur websocket est fonctionnel et sécurisé (ticket)</li>
+                        </ul>
+                        Sera corrigé le 17 février. Fournir un lien vers un dépôt git publique (gihub, gitlab ou
+                        bitbucket par ex.)
+                    </li>
                 </ol>
-                Sur projet :
-                <ul>
-                    <li>Les codes http utilisés sont corrects (200, 401, 403, 500).</li>
-                    <li>L'api d'inscription et authentification est fonctionnelle et sécurisée.</li>
-                    <li>Les inscriptions sont persistantes en base de données.</li>
-                    <li>L'application comporte une couche d'accès aux données. (les requêtes SQL sont séparées du reste)<ul>
-                        <li>OU si autre découpage, le choix d'architecture est argumenté de façon détaillé</li>
-                    </ul></li>
-                    <li>Le serveur websocket est fonctionnel et sécurisé (ticket)</li>
-                </ul>
-                Sera corrigé le 17 février. Fournir un lien vers un dépôt git publique (gihub, gitlab ou bitbucket par ex.)
             </div>
             <div>
                 <a href="..">←</a>
@@ -171,21 +178,25 @@
 <script src="plugin/markdown/markdown.js"></script>
 
 <script>
-  // More info about config & dependencies:
-  // - https://github.com/hakimel/reveal.js#configuration
-  // - https://github.com/hakimel/reveal.js#dependencies
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
 
-  Reveal.initialize({
-    history      : true,
-    dependencies : [
-      { src : 'plugin/notes/notes.js', async : true },
-      { src : 'plugin/highlight/highlight.js', async : true, callback : function() { hljs.initHighlightingOnLoad(); } }
-    ],
-    markdown     : {
-      sanitize    : false,
-      smartypants : false,
-    }
-  });
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ],
+        markdown: {
+            sanitize: false,
+            smartypants: false,
+        }
+    });
 
 
 </script>
