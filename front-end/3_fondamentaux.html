@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Dev front-end</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div style="position: absolute;z-index:999;padding:0.5rem;"><a href="."><strong>&nbsp;←</strong></a></div>
+    <div class="slides">
+        <section>
+            <h1>Dev front-end</h1>
+            <h1 class="small">Fondamentaux</h1>
+        </section>
+        <section>
+            <section><h2>Le Front-end</h2></section>
+            <section>
+                <ul>
+                    <li>On parle de développement Front-end pour désigner des applications clientes, c'est à dire qui
+                        sont exécutées sur la machine de l'utilisateur.
+                    </li>
+                    <li>Par opposition, le développement Back-end fait référence aux applications qui sont exécutées sur
+                        des serveurs distants.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li>On parle parfois de client léger ou de client lourd.
+                        <ul>
+                            <li>Le client léger est une application qui fonctionne via un navigateur.</li>
+                            <li>Le client lourd est une application qui fonctionne via le système d'exploitation.</li>
+                            <li>Malgré leur nom, les clients lourds sont <em>généralement</em> plus performants du fait
+                                de leur code natif mieux optimisé
+                            </li>
+                            <li>On pourra préférer les appeler applications natives (native apps) et applications web
+                                (web apps).
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Le Front-end peut faire référence à ces 2 types d'applications, mais le développement Front-end
+                        désigne très généralement le développement d'applications web.
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section><h2>HTML - CSS - JS</h2></section>
+            <section>
+                <ul>
+                    <li>Il n'y a pas de différence technique entre un site web et une application web.</li>
+                    <li>La seule différence est celle du propos : une application rends un service, une site web apporte
+                        de l'information.
+                    </li>
+                    <li>La frontière est souvent floue et n'a pas d'importance pour le développement.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>index.html</h3>
+                <pre><code style="font-size: 1.2rem;line-height: 1.4" data-trim class="html">
+                &lt;html>
+                    &lt;head>
+                        &lt;title>Ma Page&lt;/title>
+                    <!-- Fichier de style qui sera chargé puis pris en compte -->
+                        <link rel="stylesheet" href="css/styles.css">
+                    &lt;/head>
+                    &lt;body>
+                        &lt;div>Le contenu de ma page&lt;/div>
+
+                    <!-- Fichier JavaScript qui sera chargé puis exécuté -->
+                        &lt;script type="text/javascript" src="main.js">&lt;/script>
+
+                    <!-- JavaScript intégré au html, exécuté immédiatement -->
+                        &lt;script type="text/javascript">
+                            // ici mon code javascript
+                        &lt;/script>
+                    &lt;/body>
+                &lt;/html>
+                </code></pre>
+            </section>
+            <section class="small">
+                <ul class="smaller">
+                    <li>index.html est par convention la première page chargée lorsqu'aucun document n'est précisé.</li>
+                    <li>Par convention, on appellera notre fichier JS principal "main.js" ou "app.js".<br/>
+                        On pourra le ranger dans un sous dossier relativement à la page html.
+                    </li>
+                    <li>Par convention, on appeller notre fichier CSS principal "styles.css".<br/>
+                        On pourra le ranger dans un sous dossier relativement à la page html.
+                    </li>
+                    <li>On utilise des chemins relatifs pour rattacher les fichiers entre eux.
+                        <ul>
+                            <li><code>href="css/styles.css"</code> pour accéder à <code>styles.css</code> depuis <code>index.html</code>
+                            </li>
+                            <li><code>src="js/main.js"</code> pour accéder à <code>main.js</code> depuis <code>index.html</code>
+                            </li>
+                            <li><code>background-image: url(../images/header.jpg)</code> pour accéder à une image depuis
+                                <code>styles.css</code></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div>
+                    <br/>
+                    <div>
+                        Arborescence finale :
+                    </div>
+                    <code>
+                        <ul class="small">
+                            <li>projet/index.html</li>
+                            <li>projet/js/main.js</li>
+                            <li>projet/css/styles.css</li>
+                            <li>projet/images/&lt;fichiers images></li>
+                        </ul>
+                    </code>
+                </div>
+            </section>
+            <section>
+                <h3>Point de vue du navigateur web</h3>
+                <ul class="small">
+                    <li>Le HTML est transformé en DOM</li>
+                    <li>Le DOM est un arbre, c'est à dire un objet qui contient des sous objets, et qui décrit ce que le
+                        navigateur doit afficher
+                    </li>
+                    <li>Le DOM contient 100% des infos dont le navigateur a besoin pour calculer le rendu</li>
+                    <li>Le DOM peut être modifié en JavaScript (et on ne va pas se priver !)</li>
+                    <li>Un arbre contient des nœuds, chaque nœud a un parent (sauf le nœud racine). Chaque balise html
+                        sera transformée en nœud dans le DOM, on pourra ensuite accéder à son nœud parent (la
+                        balise englobante), et à ses
+                        enfants (les balises englobées).
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section><h3>Compatibilité</h3></section>
+
+            <section><h3>Support des navigateurs</h3>
+
+                <a href="https://caniuse.com/" target="_blank">https://caniuse.com/</a>
+
+            </section>
+            <section>
+                <h3>Compatibilité : Modernizr</h3>
+
+                <p>Détecte le support d'une fonctionnalité par le navigateur</p>
+
+                <p><a href="https://modernizr.com/">https://modernizr.com/</a></p>
+
+                <ul class="small">
+                    <li>Au moment d'afficher la page chez l'utilisateur, répond à la question : Le navigateur supporte
+                        t'il la
+                        fonctionnalité X ?
+                    </li>
+                    <li>Pivot de l'amélioration progressive (progressive enhancement)</li>
+                    <li>Plus fin que la détection de user-agent navigateur</li>
+                </ul>
+
+            </section>
+            <section><h3>Compatibilité : Polyfills</h3>
+
+                Ajoute en JavaScript une fonctionnalité native qu'un navigateur n'implémente pas
+
+                <pre><code data-trim class="html">
+                🔎 &lt;nom_fonctionalité> polyfill &lt;navigateur_cible>
+                </code></pre>
+            </section>
+            <section><h3>Compatibilité : BabelJS</h3>
+
+                <p>Permet de faire fonctionner une version récente de javascript (ES6) sur un navigateur qui ne le
+                    supporte.</p>
+
+                <a href="https://babeljs.io/">https://babeljs.io/</a>
+            </section>
+            <section>
+                <h3>Quelques mots clés</h3>
+                <ul>
+                    <li>Bibliothèque (<i lang="en">Library</i>)&nbsp;: A utiliser en l'état</li>
+                    <li>Framework&nbsp;: Impose une manière de faire</li>
+                    <li>Boilerplate&nbsp;: Squelette d'application pré construit</li>
+                    <li>Generators&nbsp;: initialise une appli sur mesure</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section><h2>Architecture orientée composants</h2></section>
+            <section class="small">Approche traditionnelle : progressive enhancement (amélioration progressive). On part
+                d'une page web 100 % HTML et CSS, des scripts JavaScript viennent enrichir le comportement du HTML en se
+                branchant sur l'existant. Dans l'idée, le site internet devrait être entièrement fonctionnel sans
+                JavaScript.
+            </section>
+            <section class="small">Approche composant : plutôt que de découper l'application en technologies et en
+                couches, on la découpe en composants. Chaque composant est lui même une sous-application de
+                l'application, il rassemble au même endroit des données, des informations de rendu (HTML, CSS), et des
+                comportements (JS). Il peut lui même contenir des sous-composants.
+            </section>
+            <section class="small">La communication naturelle entre composants est descendante : un composant parent
+                envoi une information au composant enfant en lui passant une props
+            </section>
+            <section class="small">La communication transverse est possible via JavaScript. Différentes techniques
+                existent : entrepôt de données (store), Système d'événement global, Contextes (React).
+            </section>
+            <section class="small">La communication ascendante est possible, cependant le parent doit donner une
+                opportunité de réponse au composant enfant (fonction de rappel <em>ou callback</em>)
+            </section>
+        </section>
+        <section>
+            <h2>Évaluations</h2>
+            <div>
+                Chaque début de cours
+            </div>
+            <div>;
+                <a href="..">←</a>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<script src="js/reveal.js"></script>
+<script src="plugin/markdown/marked.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ],
+        markdown: {
+            sanitize: false,
+            smartypants: false,
+        }
+    });
+
+
+</script>
+</body>
+</html>

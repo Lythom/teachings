@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Dev front-end</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div style="position: absolute;z-index:999;padding:0.5rem;"><a href="."><strong>&nbsp;←</strong></a></div>
+    <div class="slides">
+        <section>
+            <h1>Dev front-end</h1>
+            <h1 class="small">Project Client - inscription - connexion - chat - espace virtuel</h1>
+        </section>
+        <section>
+            <h2>L'API serveur</h2>
+            <div>Description du service via Postman :</div>
+            <div><a href="fichiers/server.postman_collection.json">Collection Postman à importer</a></div>
+            <div><a href="https://www.getpostman.com/collections/d8473799c4a44c7a84f9">Environnement Postman à importer</a></div>
+            <img src="images/import_postman.png"/>
+        </section>
+        <section>
+            <h2>Exercice : Client JavaScript Vanilla</h2>
+            <div class="smaller">Vanilla = sans aucun framework</div>
+            <ul>
+                <li>Formulaire d'inscription</li>
+                <li>Formulaire de connexion</li>
+                <li>Authentification au chat</li>
+                <li>recevoir et poster des messages sur le chat</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Exercice: Client avec architecture composants</h2>
+            <ul>
+                <li>Installation d'un starter-kit <a href="https://github.com/facebook/create-react-app#quick-overview">reactJS</a>,
+                    <a href="https://cli.vuejs.org/guide/">VueJS</a> ou <a href="https://svelte.dev/blog/the-easiest-way-to-get-started#2_Use_degit">SvelteJS</a></li>
+                <li>Composant Formulaire de connexion</li>
+                <li>Composant Authentification au chat</li>
+                <li>Composant recevoir et poster des messages sur le chat</li>
+                <li>Composant global pour piloter les autres</li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+
+<script src="js/reveal.js"></script>
+<script src="plugin/markdown/marked.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+
+    Reveal.initialize({
+        history: true,
+        dependencies: [
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ],
+        markdown: {
+            sanitize: false,
+            smartypants: false,
+        }
+    });
+
+
+</script>
+</body>
+</html>
