@@ -220,14 +220,138 @@
             </section>
         </section>
         <section>
-            <h2>Évaluations</h2>
-            <div>
-                Chaque début de cours
-            </div>
-            <div>;
-                <a href="..">←</a>
-            </div>
+            <section><h2>Conception réactive</h2></section>
+            <section>
+                <div>Pourquoi React et autres frameworks sont-ils populaires ? En grande partie grace à
+                    leur mode de conception "déclaratif" ou "reactif".
+                </div>
+                <div class="small">En effet, l'architecture orientée composée tel que le propose React permet de
+                    déclarer l'affichage
+                    tel qu'on le veut en fonction des données. <code>rendu = fonction(props, stats)</code>. Cette forme
+                    de conception s'oppose à la programmation impérative qui décrit des suites de transformations. Ici
+                    on change la donnée, et le framwork se charge de transformer le rendu automatiquement pour
+                    correspondre à la nouvelle description.
+                </div>
+            </section>
         </section>
+        <section>
+            <section><h2>Composants</h2></section>
+            <section>
+                <ul class="small">
+                    <li>
+                        Un composant est une brique applicative autonome vis à vis de son rendu et de
+                        son interactibilité.
+                    </li>
+                    <li>Par convention, son nom commencera toujours par une majuscule. Il est fréquent d'utiliser une
+                        majuscule pour le nom de fichier également
+                    </li>
+                    <li>Il peut lire des données lui venant de son parent (<code>this.props</code>)</li>
+                    <li>Il peut lire des données statiques immuables (constantes internes ou importées)</li>
+                    <li>Il peut lire et écrire dans un état interne propre (<code>this.state</code>) qu'il utilisera
+                        pour le rendu de données dynamiques transverses (ex: retour d'événément click)
+                    </li>
+                    <li>La modification du state doit se faire explicitement en React: <code>this.setState({myKey:
+                        'data')</code> et ne dois jamais être faite dans la fonction de rendu
+                    </li>
+                    <li>
+                        <a href="https://fr.reactjs.org/docs/components-and-props.html">Doc React sur les composants</a>
+                        <a href="https://fr.reactjs.org/docs/state-and-lifecycle.html">Doc React sur les cycles de
+                            vie</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Listes et cés</h3>
+                <div><a href="https://fr.reactjs.org/docs/lists-and-keys.html">Listes et clés (doc React)</a></div>
+            </section>
+            <section>
+                <h3>Performances</h3>
+                <div><a href="https://fr.reactjs.org/docs/optimizing-performance.html#avoid-reconciliation">Éviter la
+                    réconciliation (doc React)</a></div>
+                <div><a href="https://fr.reactjs.org/docs/react-api.html#reactpurecomponent">Pure components et
+                    react.memo (doc React)</a></div>
+            </section>
+            <section>
+                <h3>Formulaires</h3>
+                <div><a href="https://fr.reactjs.org/docs/forms.html">Formulaires (doc React)</a></div>
+                <div>Préférer l'utilisation de composants contrôlés, plus faciles à intégrer dans une logique
+                    déclarative.
+                </div>
+            </section>
+
+        </section>
+        <section>
+            <section><h2>Routage</h2></section>
+            <section class="small">
+                <ul>
+                    <li>Router consiste à faire correspondre une URL à une "page".</li>
+                    <li>Dans une application web, la notion de "page" est parfois floue voire inexistante. Dans le cas,
+                        le routage fera référence à l'association entre une URL et un état spécifique de l'application.
+                    </li>
+                    <li>L'association URL / page est à définir ensemble entre le développeur et le responsable du
+                        produit.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <ul class="small">
+                    <li>Router revient donc à :
+                        <ul>
+                            <li>Lorsqu'on arrive sur la page, <br/>=> mettre l'application
+                                dans un état prenant en compte les paramètres d'ur
+                            </li>
+                            <li>Lors d'une action de navigation qui ne recharge pas la page, <br/>=> mettre à jour l'url
+                                et
+                                mettre l'application dans un état prenant en compte les paramètres d'url
+                            </li>
+                            <li>Si application web (SPA): indiquer au serveur que toutes les URL doivent redirifer vers
+                                le même point d'entrée.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Pour écouter un changement d'url :
+                        <ul>
+                            <li>
+                                Au chargement de la page: dans un script exécuté dès le chargement
+                            </li>
+                            <li>Lors d'une action de navigation interne: <a
+                                    href="https://developer.mozilla.org/fr/docs/Web/API/Window/popstate_event">window.addEventListener("popstate",
+                                event => {})</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Pour manipuler l'url: <a href="https://caniuse.com/#search=history">history.pushState(null,
+                        event.target.pathname, event.target.pathname)</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <a href="https://github.com/Lythom/svelte-chat-client/commit/f3afbcbb7e805aadea328bc5b6a2bed785ca2ca0">Exemple
+                    sur Github</a>
+            </section>
+        </section>
+        <section>
+            <section><h2>Architecture applicative</h2></section>
+            <section>
+                <ul class="small">
+                    <li>App
+                        <ul>
+                            <li>Components <code>=> app agnostic</code>
+                                <ul>
+                                    <li>MyComponent</li>
+                                </ul>
+                            </li>
+                            <li>MyLayoutComponent <code>=> app specific</code>
+                                <ul>
+                                    <li>MyLayoutSpecificComponent <code>=> can use MyComponent</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
     </div>
 </div>
 
